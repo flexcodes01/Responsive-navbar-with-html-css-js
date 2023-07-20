@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+body{
+  background: #000000;
+}
+
+
+
+nav {
+  font-family: 'Poppins', sans-serif;
+    top: 0;
+    z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  background: #FFE400;
+  /* border-bottom: #222222 1.5px solid;
+  background: #131313; */
+  
+}
+
+nav .logo {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: 22px;
+  font-family: 'Poppins', sans-serif;
+ 
+}
+
+nav ul {
+  --padding: 20px;
+  --font-size: 17px;
+
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size);
+  overflow-y: hidden;
+  border-bottom: 2px black solid;
+  transition: 1s cubic-bezier(.68,-0.55,.27,10.55);
+  
+}
+
+nav ul li {
+  padding: var(--padding);
+}
+
+nav ul li a {
+
+  color: #000000;
+  font-weight:700 ;
+
+  text-decoration: none;
+  position: relative;
+}
+nav ul li a:hover{
+color: #686868;
+}
+
+nav ul li a::after {
+  content: "";
+  width: 0%;
+  height: 1.7px;
+  border-radius: 99px;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav .menu {
+  width: 22px;
+  height: 16px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin: 20px;
+}
+
+nav .menu span {
+  width: 100%;
+  height: 2px;
+  border-radius: 99px;
+  background: #000000;
+  transition: 0.3s ease;
+  transform-origin: left;
+}
+
+nav .menu.active span {
+  background: black;
+}
+
+nav .menu.active span:nth-child(1) {
+  transform: rotate(40deg);
+}
+
+nav .menu span:nth-child(3) {
+  transform-origin: left;
+}
+
+nav .menu.active span:nth-child(3) {
+  transform: rotate(-40deg);
+}
+
+nav .menu.active span:nth-child(2) {
+  transform: scale(0);
+}
+
+@media (max-width: 910px) {
+    nav .menu {
+      display: flex;
+    }
+  
+    nav ul {
+      --height: 0px;
+  
+      flex-direction: column;
+      background: #FFE400;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 56px;
+      height: var(--height);
+      transition: 1s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    nav ul.active {
+      --height: calc(
+        (((var(--padding) * 2) + (var(--font-size) * 1.5))) * var(--childenNumber)
+      );
+      /*   (Block Level Padding + The Font Size) * The Number of Children   */
+      
+      
+      transition: 1s ease;
+    }
+  
+    nav ul li {
+      width: 100%;
+      text-align: center;
+    }
+    nav ul li a {
+      width: 100%;
+      text-transform: capitalize;
+    }
